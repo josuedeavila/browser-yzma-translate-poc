@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tradutor de erros no browser (yzma/WASM)</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Tradutor de erros de plataforma — local, no browser (yzma/WASM)</h1>
+    <p class="lead">
+      Traduz um erro técnico de plataforma (marketplace) para uma frase simples em
+      português, <strong>inteiramente no navegador</strong> — via
+      <a href="https://github.com/hybridgroup/yzma" target="_blank" rel="noopener">yzma</a>,
+      rodando <code>llama.cpp</code> como WebAssembly, sem servidor. Ver
+      <code>web/samples.js</code> pelo system prompt e a seção "Performance sem GPU" do
+      README pelos ajustes de velocidade.
+    </p>
+
+    <section class="panel setup">
+      <div class="field">
+        <label for="modelUrl">Modelo (GGUF, buscado direto do browser)</label>
+        <input
+          id="modelUrl"
+          value="https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct-GGUF/resolve/main/qwen2.5-0.5b-instruct-q4_0.gguf"
+        />
+      </div>
+      <div class="field">
+        <label for="sample">Payload de exemplo</label>
+        <select id="sample"></select>
+      </div>
+      <div class="field">
+        <label for="errorJson">JSON do erro (editável)</label>
+        <textarea id="errorJson" rows="6"></textarea>
+      </div>
+      <div class="actions">
+        <button id="loadModelBtn">1. Carregar modelo</button>
+        <button id="runBtn" disabled>2. Traduzir</button>
+      </div>
+      <div id="modelStatus" class="status">modelo não carregado</div>
+    </section>
+
+    <section class="panel">
+      <h2>Tradução</h2>
+      <div id="localStatus" class="status">aguardando</div>
+      <div id="localOutput" class="output"></div>
+      <div id="localTiming" class="timing"></div>
+    </section>
+
+    <script src="samples.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,89 @@
+body {
+  font-family: system-ui, sans-serif;
+  margin: 0 auto;
+  max-width: 64rem;
+  padding: 1.5rem;
+  line-height: 1.5;
+}
+
+h1 {
+  font-size: 1.4rem;
+}
+
+.lead {
+  color: #444;
+}
+
+.panel {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.field {
+  margin-top: 0.75rem;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+input,
+textarea,
+select,
+button {
+  font: inherit;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.4rem;
+}
+
+textarea {
+  font-family: ui-monospace, monospace;
+  font-size: 0.85rem;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+button {
+  cursor: pointer;
+  padding: 0.6rem;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.status {
+  margin-top: 0.75rem;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.output {
+  margin-top: 0.5rem;
+  padding: 0.75rem;
+  min-height: 5rem;
+  white-space: pre-wrap;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fafafa;
+}
+
+.timing {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: #777;
+}
+
+.status.error {
+  color: #b00020;
+}
