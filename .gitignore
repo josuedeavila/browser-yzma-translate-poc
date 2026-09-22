@@ -1,7 +1,9 @@
 # Vendored yzma runtime + llama.cpp WASM build — fetched by `make vendor-yzma`,
-# not committed (multi-MB binaries that track a pinned yzma release).
+# not committed (multi-MB binaries + install metadata that track a pinned
+# yzma release).
 web/vendor/yzma/*.js
 web/vendor/yzma/*.wasm
+web/vendor/yzma/*.json
 
 # Optional same-origin model fallback (see README "Troubleshooting") — never
 # commit a GGUF file.

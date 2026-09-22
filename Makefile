@@ -26,6 +26,7 @@ deps:
 # get it, not a `go build`.
 .PHONY: vendor-yzma
 vendor-yzma:
+	mkdir -p $(VENDOR_DIR)
 	rm -rf $(CLONE_DIR)
 	git clone --depth 1 --branch $(YZMA_VERSION) https://github.com/hybridgroup/yzma $(CLONE_DIR)
 	cp $(CLONE_DIR)/wasm/yzma-loader.js $(CLONE_DIR)/wasm/worker.js $(VENDOR_DIR)/
