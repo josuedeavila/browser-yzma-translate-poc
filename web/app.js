@@ -92,6 +92,7 @@ worker.onmessage = (event) => {
       break;
     case "done":
       generating = false;
+      runBtn.disabled = false;
       // The system prompt asks for one short sentence. A small/base model
       // sometimes keeps going past that (e.g. hallucinating a further
       // "Input:/Output:" turn) instead of emitting an end-of-generation
@@ -103,6 +104,9 @@ worker.onmessage = (event) => {
       break;
     case "error":
       loadModelBtn.disabled = false;
+      // Only re-enable "Traduzir" if a model is actually loaded — this error
+      // might be the model load itself failing, not a translation.
+      runBtn.disabled = !modelReady;
       generating = false;
       modelStatus.textContent = "erro: " + text;
       modelStatus.classList.add("error");
@@ -156,6 +160,10 @@ function runLocal(errorObj) {
     return;
   }
 
+  // Disabled for the whole generation, not just while a "done"/"error" is
+  // pending: generate() runs in a Go goroutine, and a second click before it
+  // finishes would race the first call on the shared llama.cpp context.
+  runBtn.disabled = true;
   localStatus.classList.remove("error");
   localStatus.textContent = "gerando…";
   localOutput.textContent = "";
